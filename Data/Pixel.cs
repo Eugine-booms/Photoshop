@@ -22,11 +22,23 @@ namespace MyPhotoshop
 		}
 
 		private double r;
-		public double R { get => r; set => r = Check(value); }
+		public double R { get => r; private set => r = Check(value); }
 		private double g;
-		public double G { get => g; set => g = Check(value); }
+		public double G { get => g; private set => g = Check(value); }
 		private double b;
-		public double B { get => b; set => b = Check(value); }
+		public double B { get => b; private set => b = Check(value); }
+
+		public Pixel(double r, double g, double b)
+		{
+			this.r = this.g = this.b = 0;
+			R = r;
+			G = g;
+			B = b;
+		}
+
+		public static Pixel operator *(Pixel p, double c) => new Pixel(Trim(p.R* c), Trim(p.G* c), Trim(p.B* c));
+		
+		public static Pixel operator *(double c, Pixel p) => p * c;
 
 		private double Check(double value)
 		{

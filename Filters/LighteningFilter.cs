@@ -1,6 +1,3 @@
-using System;
-using System.Drawing;
-
 namespace MyPhotoshop
 {
 	public class LighteningFilter : IFilter
@@ -21,19 +18,15 @@ namespace MyPhotoshop
 
 		public Photo Process(Photo original, double[] parameters)
 		{
-			var result = new Photo(original.Width, original.Height);
-			for (int x = 0; x < result.Width; x++)
-				for (int y = 0; y < result.Height; y++)
-				{
-					result.Pixels[x, y].R = Pixel.Trim(original.Pixels[x, y].R * parameters[0]);
-					result.Pixels[x, y].G = Pixel.Trim(original.Pixels[x, y].G * parameters[0]);
-					result.Pixels[x, y].B = Pixel.Trim(original.Pixels[x, y].B * parameters[0]);
-				}
+			var result = new Photo(original.width, original.height);
+			for (int x = 0; x < result.width; x++)
+				for (int y = 0; y < result.height; y++)
+					result[x, y] = original[x, y] * parameters[0];
 
 			return result;
 		}
 
-		
+
 	}
 }
 

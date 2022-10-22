@@ -2,16 +2,11 @@
 
 namespace MyPhotoshop
 {
-	public class Pixel
+	public struct Pixel
 	{
 		private const int _minValue = 0;
 		private const int _maxValue = 1;
-		public Pixel(double r, double g, double b)
-		{
-			R = r;
-			G = g;
-			B = b;
-		}
+
 		public static double Trim(double value)
 		{
 			if (value > _maxValue)
